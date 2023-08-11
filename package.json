@@ -1,0 +1,78 @@
+{
+  "name": "vite2-vue3-ts-electron-project",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/electron-main/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "rimraf dist && vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "^1.18.1",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/runtime-core": "^3.3.4",
+    "election": "^0.0.0",
+    "electron": "^25.3.1",
+    "electron-builder": "^23.0.3",
+    "electron-devtools-installer": "^3.2.0",
+    "multispinner": "^0.2.1",
+    "rimraf": "^3.0.2",
+    "scss": "^0.2.4",
+    "typescript": "^4.9.5",
+    "vite": "2.5.10",
+    "vite-plugin-electron": "^0.4.5",
+    "vue-route": "^1.5.1",
+    "vue-router": "^4.2.4",
+    "vue-tsc": "^0.34.7",
+    "vuex": "^4.1.0"
+  },
+  "build": {
+    "appId": "com.smallpig.desktop",
+    "productName": "smallpig",
+    "asar": true,
+    "copyright": "Copyright © 2022 smallpig",
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "dist"
+    ],
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8080"
+      }
+    ],
+    "releaseInfo": {
+      "releaseNotes": "版本更新的具体内容"
+    }
+  }
+}
